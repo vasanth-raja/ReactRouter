@@ -5,6 +5,7 @@ import SignUp from './pages/SignUp'
 import Home from './pages/Home'
 import Layout from './layout/Layout'
 import Error from './pages/Error'
+import About from './pages/About'
 function App() {
   const router= createBrowserRouter(
     createRoutesFromElements(
@@ -12,6 +13,7 @@ function App() {
       <Route index element={<Home/>}></Route>
       <Route path='/login' element={<Login/>}></Route>
       <Route path='/signup' element={<SignUp/>}></Route>
+      <Route path='/about' element={<About/>}></Route>
       <Route path='*' element={<Error/>}></Route>
 
       </Route>

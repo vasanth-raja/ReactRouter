@@ -1,0 +1,6 @@
+.about-container{
+    display: flex;
+    min-width: 640px;
+    background-color: white;
+    flex-direction: column;
+}

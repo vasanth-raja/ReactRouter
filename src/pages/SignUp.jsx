@@ -19,10 +19,11 @@ const SignUp = () => {
 
     })
     const data = await res.json();
+    console.log(data)
      data.message=="User created"?navigate('/login'):alert(data.message)
   }
   return (
-    <div>
+    <div className="container">
       <form onSubmit={submitForm} id="myform" className="container">
         <h1>Sign Up</h1>
         <div>
