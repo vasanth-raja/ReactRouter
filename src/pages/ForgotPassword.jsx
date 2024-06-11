@@ -1,51 +1,42 @@
-import React,{useNavigate} from 'react'
-import { useNavigate } from 'react-router-dom';
+import React,{useState} from 'react'
+
 
 const ForgotPassword = () => {
-    const navigate=useNavigate()
-    const [password,setPassword]=useState("");
+    const [email,setEmail]=useState("");
     const submitForm = async(e)=>{
       e.preventDefault();
-      const res=await fetch('http://localhost:5000/user/forgot-password',{
+      const res=await fetch('http://localhost:5000/user/forgotPassword',{
         method:"POST",
         headers:{
           'Content-Type':'application/json'
         },
         body:JSON.stringify({
-          password
+          email:email
         })
   
       })
       const data = await res.json();
       console.log(data)
-       data.message=="Password Changed"?()=>{navigate('/login') 
+       data.message==="Mail Sent"?
         alert("Check your mail to reset password")
-       }:alert(data.message)
+       :alert(data.message)
     }
   return (
     <div className="container">
     <form onSubmit={submitForm} id="myform" className="container">
       <h1>Forgot Password</h1>
       <div>
-        <label htmlFor="password">New Password</label>
+        <label htmlFor="email">EmailID</label>
         <input
-          type="password"
-          name="password"
-          placeholder="Enter Your password"
-          value={password}
-          onChange={(e)=>{setPassword(e.target.value)}}
-        />
-      </div>
-      <div>
-        <label htmlFor="confirmPassword">Confirm Password</label>
-        <input
-          type="password"
-          name="confirmPassword"
-          placeholder="Retype Your password"
+          type="email"
+          name="email"
+          placeholder="Enter Your EmailID"
+          value={email}
+          onChange={(e)=>{setEmail(e.target.value)}}
         />
       </div>
       <button className="login-btn" type="submit">
-        Change password
+        Submit
       </button>
     </form>
   </div>

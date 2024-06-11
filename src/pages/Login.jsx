@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import '../styles/Login.css'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 const Login = () => {
   const navigate=useNavigate()
   const [email,setEmail]=useState("");
@@ -36,6 +36,9 @@ const Login = () => {
     <label  htmlFor="password">Password</label>
     <input type="password"name="password"  placeholder="Enter Your password"
     value={password} onChange={(e)=>{setPassword(e.target.value)}}/>
+    </div>
+    <div>
+      <Link to="/forgotPassword">Forgot Password</Link>
     </div>
     <button className="login-btn" type="submit">LOGIN</button>
    
