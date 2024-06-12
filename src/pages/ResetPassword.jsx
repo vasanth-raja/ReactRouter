@@ -1,8 +1,9 @@
 import React,{useState} from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,useParams } from 'react-router-dom';
 
 const ResetPassword = () => {
     const navigate=useNavigate()
+    const param=useParams();
     const [password,setPassword]=useState("");
     const submitForm = async(e)=>{
       e.preventDefault();
@@ -12,15 +13,15 @@ const ResetPassword = () => {
           'Content-Type':'application/json'
         },
         body:JSON.stringify({
+          id:param.id,
+          token:param.token,
           password
         })
   
       })
       const data = await res.json();
-      console.log(data)
-       data.message=="Password Changed"?()=>{navigate('/login') 
-        alert("Check your mail to reset password")
-       }:alert(data.message)
+      alert(data.message)
+      data.message=="Password updated"? navigate("/login"): null
     }
   return (
     <div className="container">
